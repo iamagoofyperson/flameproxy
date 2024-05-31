@@ -1,40 +1,16 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Proxy Website</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <h1>My Proxy Website</h1>
-    <form id="proxy-form">
-      <label for="url">Enter URL:</label>
-      <input type="text" id="url" name="url">
-      <button type="submit">Go</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Proxy</title>
+</head>
+<body>
+    <h1>Web Proxy</h1>
+    <form action="/api/proxy" method="get">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Go</button>
     </form>
-    <script src="script.js"></script>
-  </body>
+</body>
 </html>
-
-/* style.css */
-body {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-#proxy-form {
-  margin-bottom: 20px;
-}
-
-/* script.js */
-const form = document.getElementById('proxy-form');
-const urlInput = document.getElementById('url');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const url = urlInput.value;
-  const newTab = window.open('', '_blank');
-  newTab.location.href = `https://cors-anywhere.herokuapp.com/${encodeURIComponent(url)}`;
-});
