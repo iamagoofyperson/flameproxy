@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>schprxy</title>
+    <title>My Proxy Website</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'elf' 'unsafe-inline'; style-src 'elf' 'unsafe-inline';">
   </head>
   <body>
     <h1>My Proxy Website</h1>
@@ -16,3 +15,26 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#proxy-form {
+  margin-bottom: 20px;
+}
+
+/* script.js */
+const form = document.getElementById('proxy-form');
+const urlInput = document.getElementById('url');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const url = urlInput.value;
+  const newTab = window.open('', '_blank');
+  newTab.location.href = `https://cors-anywhere.herokuapp.com/${encodeURIComponent(url)}`;
+});
